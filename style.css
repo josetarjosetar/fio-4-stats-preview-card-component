@@ -24,7 +24,7 @@ body {
 
 .background {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   background-color: var(--colors-navy-950);
   width: 100%;
@@ -37,16 +37,21 @@ body {
   display: flex;
   flex-direction: column;
   background-color: var(--colors-blue-950);
-  max-width: 338px;
+  max-width: min(338px, 85%);
   border-radius: 8px;
   overflow: clip;
   margin-bottom: 48px;
-  margin-top: 232px;
+  margin-top: 48px;
 }
 
 .card-image {
   filter: grayscale(100%) sepia(100%) hue-rotate(250deg) saturate(300%)
     brightness(100%);
+  max-width: 100%;
+}
+
+.card-image-source {
+  max-width: 100%;
 }
 
 .card-text {
@@ -111,9 +116,13 @@ body {
 }
 
 @media screen and (min-width: 768px) {
+  .background {
+    align-items: center;
+  }
+
   .card {
     flex-direction: row;
-    max-width: 1200px;
+    max-width: min(85%, 1200px);
     max-height: 446px;
     margin-top: 0px;
     margin-bottom: 0px;
@@ -124,12 +133,25 @@ body {
   .card-image {
     order: 2;
     object-fit: cover;
-    max-width: 50%;
+    width: 50%;
+    min-height: 100%;
+  }
+
+  .card-image-source {
+    width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+  }
+
+  .card-title {
+    text-align: start;
   }
 
   .card-text {
     padding: 48px 72px 48px 48px;
     text-align: left;
+    align-items: flex-start;
+    width: 50%;
   }
 
   .title {
